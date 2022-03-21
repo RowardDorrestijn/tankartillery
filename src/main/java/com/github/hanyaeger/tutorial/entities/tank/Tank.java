@@ -10,6 +10,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
+import com.github.hanyaeger.tutorial.entities.bullet.Bullet;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -33,7 +34,7 @@ public class Tank extends DynamicCompositeEntity implements Collided, KeyListene
         );
         addEntity(tanksprite);
         var barrel = new Barrel(
-                new Coordinate2D(100, 20)
+                new Coordinate2D(20, 25)
         );
         addEntity(barrel);
     }
@@ -55,11 +56,7 @@ public class Tank extends DynamicCompositeEntity implements Collided, KeyListene
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-
-    }
-
-    public void shoot(){
-
+        //addEntity(new Bullet());
     }
 
 }

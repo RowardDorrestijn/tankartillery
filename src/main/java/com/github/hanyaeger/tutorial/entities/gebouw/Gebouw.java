@@ -20,11 +20,17 @@ public class Gebouw extends DynamicCompositeEntity {
         );
         addEntity(gebouwsprite);
 
-        var hitbox = new HitBox(
-                new Coordinate2D(0, 0)
+        var hitboxRechts = new HitBox(
+                new Coordinate2D(130, 0), 160, 350
         );
-        hitbox.setStrokeColor(Color.RED);
-        addEntity(hitbox);
+
+        var hitboxLinks = new HitBox(
+                new Coordinate2D(0, 20), 130, 330
+        );
+        hitboxRechts.setStrokeColor(Color.RED);
+        hitboxLinks.setStrokeColor(Color.RED);
+        addEntity(hitboxRechts);
+        addEntity(hitboxLinks);
 
 
     }

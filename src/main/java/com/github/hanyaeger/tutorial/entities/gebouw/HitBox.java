@@ -6,10 +6,10 @@ import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 
 public class HitBox extends RectangleEntity implements Collider {
-    public HitBox(Coordinate2D initialLocation) {
+    public HitBox(Coordinate2D initialLocation, int width, int height) {
         super(initialLocation);
-        setWidth(300);
-        setHeight(350);
+        setWidth(width);
+        setHeight(height);
         setFill(Color.TRANSPARENT);
     }
 
