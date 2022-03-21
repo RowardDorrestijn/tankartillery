@@ -15,11 +15,13 @@ import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
+
 import java.util.Set;
 
 public class Tank extends DynamicCompositeEntity implements Collided, KeyListener, SceneBorderTouchingWatcher, MouseButtonPressedListener {
     private HealthText healthText;
     private int health = 10;
+    private Barrel barrel;
 
     public Tank(Coordinate2D initialLocation, HealthText healthText) {
         super(initialLocation);
@@ -33,7 +35,7 @@ public class Tank extends DynamicCompositeEntity implements Collided, KeyListene
                 new Coordinate2D(0, 0)
         );
         addEntity(tanksprite);
-        var barrel = new Barrel(
+        barrel = new Barrel(
                 new Coordinate2D(20, 25)
         );
         addEntity(barrel);
@@ -56,7 +58,11 @@ public class Tank extends DynamicCompositeEntity implements Collided, KeyListene
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        //addEntity(new Bullet());
+        System.out.println(coordinate2D);
+        double xCoord = Math.sin(barrel.getGraden()) * barrel.getLength();
+        double yCoord = Math.cos(barrel.getGraden()) * barrel.getLength();
+        System.out.println(xCoord + " " + yCoord);
+        addEntity(new Bullet(new Coordinate2D(20, 50), 2, 90d));
     }
 
 }

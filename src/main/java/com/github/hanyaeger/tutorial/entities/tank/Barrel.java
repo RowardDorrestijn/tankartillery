@@ -7,7 +7,8 @@ import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import javafx.scene.input.MouseButton;
 
 public class Barrel extends DynamicSpriteEntity  implements MouseMovedListener {
-
+    private double graden;
+    private int length = 67;
 
     protected Barrel(Coordinate2D initialLocation) {
         super("sprites/barrel.png", initialLocation);
@@ -15,10 +16,16 @@ public class Barrel extends DynamicSpriteEntity  implements MouseMovedListener {
 
     @Override
     public void onMouseMoved(Coordinate2D coordinate2D) {
-        double graden = angleTo(coordinate2D) - 90;
+        graden = angleTo(coordinate2D) - 90;
         if(graden < 90 && graden > 0) {
             setRotate(graden);
         }
-        System.out.println(getAnchorLocation());
+        //System.out.println(getAnchorLocation());
+    }
+    public double getGraden(){
+        return graden;
+    }
+    public int getLength(){
+        return length;
     }
 }

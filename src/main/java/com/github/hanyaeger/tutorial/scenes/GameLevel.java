@@ -3,11 +3,15 @@ package com.github.hanyaeger.tutorial.scenes;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
+import com.github.hanyaeger.tutorial.entities.bullet.Bullet;
 import com.github.hanyaeger.tutorial.entities.gebouw.Gebouw;
+import com.github.hanyaeger.tutorial.entities.tank.Barrel;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
+import javafx.scene.input.MouseButton;
 
-public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
+public class GameLevel extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/achtergrond.png");
@@ -32,6 +36,11 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
 
     @Override
     public void setupEntitySpawners() {
+
+    }
+
+    @Override
+    public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
 
     }
 }
