@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupScene() {
-
+        setBackgroundImage("backgrounds/achtergrond.png");
     }
 
     @Override
