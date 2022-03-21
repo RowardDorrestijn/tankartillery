@@ -9,18 +9,20 @@ import javafx.scene.paint.Color;
 public class Bullet extends DynamicCircleEntity implements Collided, SceneBorderCrossingWatcher, Newtonian {
     public Bullet(Coordinate2D initialLocation, int speed, double direction) {
         super(initialLocation);
+        //System.out.println(initialLocation);
         setMotion(speed, direction);
-        setRadius(20);
+        setRadius(10);
         setFill(Color.BLACK);
+        setStrokeColor(Color.RED);
 
-        setGravityConstant(0.01);
-        setFrictionConstant(0.04);
+        setGravityConstant(0.001);
+        //setFrictionConstant(0.04);
     }
 
     @Override
     public void onCollision(Collider collider) {
         //explosie geluid
-        remove();
+        //remove();
     }
 
     @Override

@@ -21,6 +21,7 @@ public class Barrel extends DynamicSpriteEntity  implements MouseMovedListener {
             setRotate(graden);
         }
         //System.out.println(getAnchorLocation());
+
     }
     public double getGraden(){
         return graden;

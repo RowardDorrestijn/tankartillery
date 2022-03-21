@@ -12,6 +12,8 @@ import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.MouseButton;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener {
+    private Tank speler1;
+
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/achtergrond.png");
@@ -28,10 +30,10 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, M
                 new Coordinate2D(getWidth()-200, 100)
         );
 
-        var tank = new Tank(
+        speler1 = new Tank(
                 new Coordinate2D(100, getHeight()-150), healthtext
         );
-        addEntity(tank);
+        addEntity(speler1);
     }
 
     @Override
@@ -41,6 +43,6 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, M
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-
+        speler1.schiet(mouseButton, coordinate2D);
     }
 }

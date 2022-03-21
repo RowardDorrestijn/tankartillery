@@ -39,6 +39,11 @@ public class Tank extends DynamicCompositeEntity implements Collided, KeyListene
                 new Coordinate2D(20, 25)
         );
         addEntity(barrel);
+
+        var kogel = new Bullet(
+                new Coordinate2D(0, 0), 2, 90d
+        );
+        addEntity(kogel);
     }
 
     @Override
@@ -62,7 +67,18 @@ public class Tank extends DynamicCompositeEntity implements Collided, KeyListene
         double xCoord = Math.sin(barrel.getGraden()) * barrel.getLength();
         double yCoord = Math.cos(barrel.getGraden()) * barrel.getLength();
         System.out.println(xCoord + " " + yCoord);
-        addEntity(new Bullet(new Coordinate2D(20, 50), 2, 90d));
+        addEntity(new Bullet(new Coordinate2D(100, 100), 1, 90d));
+    }
+
+    public void schiet(MouseButton mouseButton, Coordinate2D coordinate2D){
+//        System.out.println(coordinate2D);
+//        double xCoord = Math.sin(barrel.getGraden()) * barrel.getLength();
+//        double yCoord = Math.cos(barrel.getGraden()) * barrel.getLength();
+//        System.out.println(xCoord + " " + yCoord);
+        var kogel = new Bullet(
+                new Coordinate2D(350, 350), 2, 90d
+        );
+
     }
 
 }
