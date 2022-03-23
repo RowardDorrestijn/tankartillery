@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import javafx.scene.paint.Color;
 
-public class Bullet extends DynamicCircleEntity implements Collided, SceneBorderCrossingWatcher, Newtonian {
+public class Bullet extends DynamicCircleEntity implements Collider, Collided, SceneBorderCrossingWatcher, Newtonian {
     public Bullet(Coordinate2D initialLocation, double speed, double direction) {
         super(initialLocation);
         //System.out.println(initialLocation);

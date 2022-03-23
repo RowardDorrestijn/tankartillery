@@ -57,10 +57,10 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, M
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         if(aanDeBeurt) {
-            speler1.schiet(mouseButton, coordinate2D);
+            speler1.schiet(mouseButton, coordinate2D, new Coordinate2D(100, -30));
             aanDeBeurt = !aanDeBeurt;
         }else{
-            speler2.schiet(mouseButton, coordinate2D);
+            speler2.schiet(mouseButton, coordinate2D, new Coordinate2D(50, -30));
             aanDeBeurt = !aanDeBeurt;
         }
     }

@@ -1,6 +1,7 @@
 package com.github.hanyaeger.tutorial.entities.spelers;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.entities.tank.Barrel;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
@@ -14,8 +15,8 @@ public class Speler2 extends Tank {
     }
 
     @Override
-    public void schiet(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        super.schiet(mouseButton, coordinate2D);
+    public void schiet(MouseButton mouseButton, Coordinate2D mouseCoordinate, Coordinate2D beginCoordinate) {
+        super.schiet(mouseButton, mouseCoordinate, beginCoordinate);
     }
 
     @Override
@@ -27,5 +28,10 @@ public class Speler2 extends Tank {
             barrel.setRotate(graden);
             barrel.setGraden(graden);
         }
+    }
+
+    @Override
+    public void onCollision(Collider collider) {
+
     }
 }

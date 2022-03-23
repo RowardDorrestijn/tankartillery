@@ -13,6 +13,7 @@ import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
 
 
 import java.util.Set;
@@ -44,14 +45,15 @@ public abstract class Tank extends DynamicCompositeEntity implements Collided, K
         barrel = new Barrel(
                 "sprites/barrel.png", new Coordinate2D(20, 25)
         );
+        var hitbox = new HitBox(
+                new Coordinate2D(0, 25), 146, 55
+        );
+        hitbox.setStrokeColor(Color.RED);
+        addEntity(hitbox);
         addEntity(tanksprite);
         addEntity(barrel);
     }
 
-    @Override
-    public void onCollision(Collider collider) {
-
-    }
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
@@ -67,17 +69,14 @@ public abstract class Tank extends DynamicCompositeEntity implements Collided, K
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
     }
 
-    public void schiet(MouseButton mouseButton, Coordinate2D coordinate2D){
-        double tankCoordX = this.getLocationInScene().getX() + 100;
-        double tankCoordY = this.getLocationInScene().getY() + 50;
+    public void schiet(MouseButton mouseButton, Coordinate2D mouseCoordinate, Coordinate2D beginCoordinate){
+        double tankCoordX = this.getLocationInScene().getX() + beginCoordinate.getX();
+        double tankCoordY = this.getLocationInScene().getY() + beginCoordinate.getY();
 
         var kogel = new Bullet(
-                new Coordinate2D(tankCoordX , tankCoordY), getSpeed(coordinate2D), barrel.getGraden()
+                new Coordinate2D(tankCoordX , tankCoordY), getSpeed(mouseCoordinate), barrel.getGraden()
         );
         gamelevel.addBullet(kogel);
-    }
-
-    public void draaiBarrel(double graden, Coordinate2D coordinate2D){
     }
 
     private double getSpeed(Coordinate2D coordinate2D){
