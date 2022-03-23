@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 public class TankSprite extends DynamicSpriteEntity {
 
-    protected TankSprite(Coordinate2D initialLocation) {
-        super("sprites/tankGroen1.png", initialLocation, new Size(150), 1, 1);
+    public TankSprite(String tankKleur, Coordinate2D initialLocation) {
+        super(tankKleur, initialLocation, new Size(150), 1, 1);
     }
 }
