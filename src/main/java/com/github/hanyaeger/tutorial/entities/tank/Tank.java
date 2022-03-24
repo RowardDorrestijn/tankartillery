@@ -21,7 +21,7 @@ import java.util.Set;
 import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
-public abstract class Tank extends DynamicCompositeEntity implements Collided, KeyListener, SceneBorderTouchingWatcher, MouseButtonPressedListener {
+public abstract class Tank extends DynamicCompositeEntity implements KeyListener, SceneBorderTouchingWatcher, MouseButtonPressedListener {
     private HealthText healthText;
     private int health = 10;
     private Barrel barrel;
@@ -46,7 +46,7 @@ public abstract class Tank extends DynamicCompositeEntity implements Collided, K
                 "sprites/barrel.png", new Coordinate2D(20, 25)
         );
         var hitbox = new HitBox(
-                new Coordinate2D(0, 25), 146, 55
+                new Coordinate2D(0, 25), 150, 55, this
         );
         hitbox.setStrokeColor(Color.RED);
         addEntity(hitbox);
@@ -84,17 +84,17 @@ public abstract class Tank extends DynamicCompositeEntity implements Collided, K
         return afstand/100 + 2;
     }
 
-    public double getGraden(){
-        return barrel.getGraden();
-    }
-
-    public GameLevel getGamelevel(){
-        return gamelevel;
-    }
-
     public Barrel getBarrel(){
         return barrel;
     }
 
     public abstract void draaiBarrel(Coordinate2D coordinate2D);
+
+    public void setHealthText(){
+        this.health--;
+        this.healthText.setHealthText(this.health);
+        if(this.health == 0){
+            this.remove();
+        }
+    }
 }

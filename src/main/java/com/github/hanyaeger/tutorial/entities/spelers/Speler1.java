@@ -34,9 +34,4 @@ public class Speler1 extends Tank {
         }
     }
 
-    @Override
-    public void onCollision(Collider collider) {
-        this.health--;
-        System.out.println(health);
-    }
 }

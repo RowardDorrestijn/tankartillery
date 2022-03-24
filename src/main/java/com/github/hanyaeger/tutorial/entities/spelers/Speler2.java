@@ -23,15 +23,9 @@ public class Speler2 extends Tank {
     public void draaiBarrel(Coordinate2D coordinate2D) {
         Barrel barrel = getBarrel();
         double graden = angleTo(coordinate2D) - 90;
-        System.out.println(graden);
         if (graden < 180 && graden >= 90) {
             barrel.setRotate(graden);
             barrel.setGraden(graden);
         }
-    }
-
-    @Override
-    public void onCollision(Collider collider) {
-
     }
 }
