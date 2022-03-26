@@ -20,11 +20,10 @@ public class HitBox extends RectangleEntity implements Collided {
 
     @Override
     public void onCollision(Collider collider) {
-        System.out.println("test");
         if(collider instanceof Bullet){
             Bullet kogel = (Bullet) collider;
             kogel.remove();
-            var explosie = new SoundClip("audio/explosie.mp3");
+            var explosie = new SoundClip("audio/explosieGeluid.mp3");
             explosie.play();
 
             tank.setHealthText();

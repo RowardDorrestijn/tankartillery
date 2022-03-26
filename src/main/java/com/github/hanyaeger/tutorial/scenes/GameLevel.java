@@ -5,20 +5,27 @@ import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
+import com.github.hanyaeger.tutorial.TankArtillery;
 import com.github.hanyaeger.tutorial.entities.bullet.Bullet;
-import com.github.hanyaeger.tutorial.entities.bullet.BulletSpawner;
 import com.github.hanyaeger.tutorial.entities.gebouw.Gebouw;
+import com.github.hanyaeger.tutorial.entities.powerbar.PowerBar;
 import com.github.hanyaeger.tutorial.entities.spelers.Speler1;
 import com.github.hanyaeger.tutorial.entities.spelers.Speler2;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
+import com.github.hanyaeger.tutorial.entities.text.NameText;
 import javafx.scene.input.MouseButton;
 
-public class GameLevel extends DynamicScene implements EntitySpawnerContainer, MouseButtonPressedListener, MouseMovedListener {
+import java.util.jar.Attributes;
+
+public class GameLevel extends DynamicScene implements MouseButtonPressedListener, MouseMovedListener {
     private Tank speler1;
     private Tank speler2;
-    private BulletSpawner bulletspawner = new BulletSpawner();
     private boolean aanDeBeurt = true; //True = speler1, false = speler2
+
+    private TankArtillery tankArtillery;
+
+    public GameLevel(TankArtillery tankArtillery){this.tankArtillery = tankArtillery;}
 
     @Override
     public void setupScene() {
@@ -30,28 +37,51 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, M
         var gebouw = new Gebouw(
                 new Coordinate2D(450, getHeight()-425)
         );
-        addEntity(gebouw);
 
-        var healthtext = new HealthText(
-                new Coordinate2D(getWidth()-200, 100)
+        var healthtextSpeler1 = new HealthText(
+                new Coordinate2D(100, 50)
         );
-        addEntity(healthtext);
+
+        var healthtextSpeler2 = new HealthText(
+                new Coordinate2D(getWidth()-200, 50)
+        );
+
+        var nameTextSpeler1 = new NameText(
+                new Coordinate2D(100, 0)
+        );
+        nameTextSpeler1.setNameText("Speler 1");
+
+        var nameTextSpeler2 = new NameText(
+                new Coordinate2D(getWidth()-200, 0)
+        );
+        nameTextSpeler2.setNameText("Speler 2");
+
+        var powerBarSpeler1 = new PowerBar(
+                new Coordinate2D(200, 50)
+        );
+
+        var powerBarSpeler2 = new PowerBar(
+                new Coordinate2D(getWidth()-400, 50)
+        );
 
         speler1 = new Speler1(
-                new Coordinate2D(100, getHeight()-150), healthtext, this, "sprites/tankGroen1.png"
+                new Coordinate2D(100, getHeight()-150), healthtextSpeler1, this, "sprites/tankGroen1.png", powerBarSpeler1
         );
-        addEntity(speler1);
 
         speler2 = new Speler2(
-                new Coordinate2D(getWidth()-246, getHeight()-150), healthtext, this, "sprites/tankGroen2.png"
+                new Coordinate2D(getWidth()-246, getHeight()-150), healthtextSpeler2, this, "sprites/tankGroen2.png", powerBarSpeler2
         );
+
+        addEntity(gebouw);
+        addEntity(healthtextSpeler1);
+        addEntity(healthtextSpeler2);
+        addEntity(nameTextSpeler1);
+        addEntity(nameTextSpeler2);
+        addEntity(powerBarSpeler1);
+        addEntity(powerBarSpeler2);
+        addEntity(speler1);
         addEntity(speler2);
 
-    }
-
-    @Override
-    public void setupEntitySpawners() {
-        addEntitySpawner(bulletspawner);
     }
 
     @Override
@@ -76,5 +106,9 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, M
         }else{
             speler2.draaiBarrel(coordinate2D);
         }
+    }
+
+    public TankArtillery getTankArtillery(){
+        return tankArtillery;
     }
 }

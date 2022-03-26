@@ -16,7 +16,7 @@ public class TankArtillery extends YaegerGame {
 
     @Override
     public void setupScenes() {
-        addScene(1, new GameLevel());
+        addScene(1, new GameLevel(this));
     }
 
     public static class HitBox {

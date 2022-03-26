@@ -1,21 +1,17 @@
 package com.github.hanyaeger.tutorial.entities.spelers;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.tutorial.entities.powerbar.PowerBar;
 import com.github.hanyaeger.tutorial.entities.tank.Barrel;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
-import com.github.hanyaeger.tutorial.entities.tank.TankSprite;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import javafx.scene.input.MouseButton;
 
 public class Speler1 extends Tank {
-    private String tankKleur;
-    private Barrel barrel;
-    private int health = 10;
 
-    public Speler1(Coordinate2D initialLocation, HealthText healthText, GameLevel gamelevel, String tankKleur) {
-        super(initialLocation, healthText, gamelevel, tankKleur);
+    public Speler1(Coordinate2D initialLocation, HealthText healthText, GameLevel gamelevel, String tankKleur, PowerBar powerBar) {
+        super(initialLocation, healthText, gamelevel, tankKleur, powerBar);
     }
 
 
@@ -32,6 +28,8 @@ public class Speler1 extends Tank {
             barrel.setRotate(graden);
             barrel.setGraden(graden);
         }
+        PowerBar powerBar = getPowerBar();
+        powerBar.setWidth((int) getSpeed());
     }
 
 }

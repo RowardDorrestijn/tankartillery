@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.entities.spelers;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.tutorial.entities.powerbar.PowerBar;
 import com.github.hanyaeger.tutorial.entities.tank.Barrel;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
@@ -10,9 +10,10 @@ import javafx.scene.input.MouseButton;
 
 public class Speler2 extends Tank {
 
-    public Speler2(Coordinate2D initialLocation, HealthText healthText, GameLevel gamelevel, String tankKleur) {
-        super(initialLocation, healthText, gamelevel, tankKleur);
+    public Speler2(Coordinate2D initialLocation, HealthText healthText, GameLevel gamelevel, String tankKleur, PowerBar powerBar) {
+        super(initialLocation, healthText, gamelevel, tankKleur, powerBar);
     }
+
 
     @Override
     public void schiet(MouseButton mouseButton, Coordinate2D mouseCoordinate, Coordinate2D beginCoordinate) {
@@ -27,5 +28,7 @@ public class Speler2 extends Tank {
             barrel.setRotate(graden);
             barrel.setGraden(graden);
         }
+        PowerBar powerBar = getPowerBar();
+        powerBar.setWidth((int) getSpeed());
     }
 }
