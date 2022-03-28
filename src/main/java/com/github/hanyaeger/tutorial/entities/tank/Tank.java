@@ -6,29 +6,25 @@ import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
-import com.github.hanyaeger.tutorial.entities.bullet.Bullet;
+import com.github.hanyaeger.tutorial.entities.bommen.Bullet;
 import com.github.hanyaeger.tutorial.entities.powerbar.PowerBar;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
-import com.github.hanyaeger.tutorial.entities.text.NameText;
 import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
-import java.util.concurrent.TimeUnit;
 
 import java.util.Set;
-import java.util.jar.Attributes;
 
-import static java.lang.Math.pow;
 import static java.lang.Math.round;
 
 public abstract class Tank extends DynamicCompositeEntity implements KeyListener, SceneBorderTouchingWatcher, MouseButtonPressedListener {
     private HealthText healthText;
     private int health = 10;
-    private Barrel barrel;
+    protected Barrel barrel;
     private GameLevel gamelevel;
     private String tankKleur;
-    private PowerBar powerBar;
+    protected PowerBar powerBar;
 
 
     public Tank(Coordinate2D initialLocation, HealthText healthText, GameLevel gamelevel, String tankKleur, PowerBar powerBar) {
@@ -82,24 +78,18 @@ public abstract class Tank extends DynamicCompositeEntity implements KeyListener
         gamelevel.addBullet(kogel);
     }
 
-    private double getSpeed(Coordinate2D coordinate2D){
+    public double getSpeed(Coordinate2D coordinate2D){
         double afstand = distanceTo(coordinate2D);
         return afstand/100 + 2;
     }
 
-    public Barrel getBarrel(){
-        return barrel;
-    }
-
-    public PowerBar getPowerBar(){return powerBar;}
-
     public abstract void draaiBarrel(Coordinate2D coordinate2D);
 
-    public void setHealthText(){
-        this.health--;
+    public void setHealth(int health){
+        this.health -= health;
         this.healthText.setHealthText(this.health);
-        if(this.health == 0){
-            this.sterf();
+        if(this.health <= 0){
+            sterf();
         }
     }
 

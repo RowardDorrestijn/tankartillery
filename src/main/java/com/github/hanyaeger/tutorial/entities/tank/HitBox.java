@@ -4,8 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
-import com.github.hanyaeger.api.media.SoundClip;
-import com.github.hanyaeger.tutorial.entities.bullet.Bullet;
+import com.github.hanyaeger.tutorial.entities.BulletCollider;
 import javafx.scene.paint.Color;
 
 public class HitBox extends RectangleEntity implements Collided {
@@ -20,13 +19,9 @@ public class HitBox extends RectangleEntity implements Collided {
 
     @Override
     public void onCollision(Collider collider) {
-        if(collider instanceof Bullet){
-            Bullet kogel = (Bullet) collider;
-            kogel.remove();
-            var explosie = new SoundClip("audio/explosieGeluid.mp3");
-            explosie.play();
-
-            tank.setHealthText();
+        if(collider instanceof BulletCollider){
+            ((BulletCollider) collider).explosion();
+            tank.setHealth(((BulletCollider) collider).damage());
         }
     }
 

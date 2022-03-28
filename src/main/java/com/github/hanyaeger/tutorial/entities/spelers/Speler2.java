@@ -22,13 +22,18 @@ public class Speler2 extends Tank {
 
     @Override
     public void draaiBarrel(Coordinate2D coordinate2D) {
-        Barrel barrel = getBarrel();
         double graden = angleTo(coordinate2D) - 90;
         if (graden < 180 && graden >= 90) {
             barrel.setRotate(graden);
             barrel.setGraden(graden);
         }
-        PowerBar powerBar = getPowerBar();
-        powerBar.setWidth((int) getSpeed());
+        int width = (int) getSpeed(coordinate2D) * 10;
+        if(width == 20){
+            width = 0;
+        }
+        if(width > 100){
+            width = 100;
+        }
+        powerBar.setWidth(width);
     }
 }

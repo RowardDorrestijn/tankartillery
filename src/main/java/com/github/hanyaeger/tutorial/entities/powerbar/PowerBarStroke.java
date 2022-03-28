@@ -9,8 +9,9 @@ public class PowerBarStroke extends RectangleEntity {
     protected PowerBarStroke(Coordinate2D initialLocation) {
         super(initialLocation);
         setWidth(100);
-        setHeight(50);
+        setHeight(25);
         setStrokeColor(Color.BLACK);
+        setFill(Color.TRANSPARENT);
     }
 
 }

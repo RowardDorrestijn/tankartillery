@@ -1,15 +1,16 @@
-package com.github.hanyaeger.tutorial.entities.bullet;
+package com.github.hanyaeger.tutorial.entities.bommen;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.github.hanyaeger.tutorial.entities.BulletCollider;
 import javafx.scene.paint.Color;
 
-public class Bullet extends DynamicCircleEntity implements Collider, Collided, SceneBorderCrossingWatcher, Newtonian {
+public class Bullet extends Bom implements SceneBorderCrossingWatcher, Newtonian {
     public Bullet(Coordinate2D initialLocation, double speed, double direction) {
-        super(initialLocation);
-        //System.out.println(initialLocation);
+        super(initialLocation, 1);
         setMotion(speed, direction + 90);
         setRadius(10);
         setFill(Color.BLACK);
@@ -19,11 +20,6 @@ public class Bullet extends DynamicCircleEntity implements Collider, Collided, S
         setFrictionConstant(0);
     }
 
-    @Override
-    public void onCollision(Collider collider) {
-        //explosie geluid
-        remove();
-    }
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {

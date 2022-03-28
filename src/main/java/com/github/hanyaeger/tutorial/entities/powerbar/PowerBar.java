@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 
 public class PowerBar extends DynamicCompositeEntity {
-    private int width;
+    private PowerBarFill powerBarFill;
 
     public PowerBar(Coordinate2D initialLocation) {
         super(initialLocation);
@@ -15,8 +15,8 @@ public class PowerBar extends DynamicCompositeEntity {
         var powerBarStroke = new PowerBarStroke(
                 new Coordinate2D(0, 0)
         );
-        var powerBarFill = new PowerBarFill(
-                new Coordinate2D(0, 0), this.width
+        powerBarFill = new PowerBarFill(
+                new Coordinate2D(0, 0), 0
         );
 
         addEntity(powerBarStroke);
@@ -24,6 +24,6 @@ public class PowerBar extends DynamicCompositeEntity {
     }
 
     public void setWidth(int width){
-        this.width = width;
+        powerBarFill.setFillWidth(width);
     }
 }

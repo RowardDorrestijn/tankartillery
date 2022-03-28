@@ -6,19 +6,21 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import com.github.hanyaeger.tutorial.TankArtillery;
-import com.github.hanyaeger.tutorial.entities.bullet.Bullet;
+import com.github.hanyaeger.tutorial.entities.bommen.Bom;
+import com.github.hanyaeger.tutorial.entities.bommen.Bullet;
 import com.github.hanyaeger.tutorial.entities.gebouw.Gebouw;
+import com.github.hanyaeger.tutorial.entities.luchtobjecten.LuchtObject;
+import com.github.hanyaeger.tutorial.entities.luchtobjecten.Vliegtuig;
 import com.github.hanyaeger.tutorial.entities.powerbar.PowerBar;
 import com.github.hanyaeger.tutorial.entities.spelers.Speler1;
 import com.github.hanyaeger.tutorial.entities.spelers.Speler2;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.entities.text.NameText;
+import com.github.hanyaeger.tutorial.spawners.LuchtObjectSpawner;
 import javafx.scene.input.MouseButton;
 
-import java.util.jar.Attributes;
-
-public class GameLevel extends DynamicScene implements MouseButtonPressedListener, MouseMovedListener {
+public class GameLevel extends DynamicScene implements MouseButtonPressedListener, MouseMovedListener, EntitySpawnerContainer {
     private Tank speler1;
     private Tank speler2;
     private boolean aanDeBeurt = true; //True = speler1, false = speler2
@@ -57,7 +59,7 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
         nameTextSpeler2.setNameText("Speler 2");
 
         var powerBarSpeler1 = new PowerBar(
-                new Coordinate2D(200, 50)
+                new Coordinate2D(300, 50)
         );
 
         var powerBarSpeler2 = new PowerBar(
@@ -85,6 +87,11 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
     }
 
     @Override
+    public void setupEntitySpawners() {
+        addEntitySpawner(new LuchtObjectSpawner(getWidth(), getHeight(), this));
+    }
+
+    @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         if(aanDeBeurt) {
             speler1.schiet(mouseButton, coordinate2D, new Coordinate2D(100, -30));
@@ -95,8 +102,8 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
         }
     }
 
-    public void addBullet(Bullet kogel){
-        addEntity(kogel);
+    public void addBullet(Bom bom){
+        addEntity(bom);
     }
 
     @Override

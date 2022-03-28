@@ -5,12 +5,15 @@ import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 
 public class PowerBarFill extends RectangleEntity {
-
     protected PowerBarFill(Coordinate2D initialLocation, int width) {
         super(initialLocation);
         setWidth(width);
-        setHeight(50);
-        setStrokeColor(Color.ORANGE);
+        setHeight(24);
+        setFill(Color.ORANGE);
+    }
+
+    public void setFillWidth(int width){
+        setWidth(width);
     }
 
 }
