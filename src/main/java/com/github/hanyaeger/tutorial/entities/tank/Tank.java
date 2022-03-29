@@ -48,7 +48,6 @@ public abstract class Tank extends DynamicCompositeEntity implements KeyListener
         var hitbox = new HitBox(
                 new Coordinate2D(0, 25), 150, 55, this
         );
-        hitbox.setStrokeColor(Color.RED);
         addEntity(hitbox);
         addEntity(tanksprite);
         addEntity(barrel);
@@ -93,10 +92,13 @@ public abstract class Tank extends DynamicCompositeEntity implements KeyListener
         }
     }
 
+    public int getHealth(){
+        return health;
+    }
+
     public void sterf(){
         this.remove();
         var explosie = new SoundClip("audio/test.mp3");
         explosie.play();
-        gamelevel.getTankArtillery().setActiveScene(1);
     }
 }

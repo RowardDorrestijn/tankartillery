@@ -14,7 +14,6 @@ public class Bullet extends Bom implements SceneBorderCrossingWatcher, Newtonian
         setMotion(speed, direction + 90);
         setRadius(10);
         setFill(Color.BLACK);
-        setStrokeColor(Color.RED);
 
         setGravityConstant(0.03);
         setFrictionConstant(0);

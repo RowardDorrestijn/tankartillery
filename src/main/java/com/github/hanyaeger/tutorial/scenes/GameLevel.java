@@ -2,6 +2,7 @@ package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
@@ -20,14 +21,16 @@ import com.github.hanyaeger.tutorial.entities.text.NameText;
 import com.github.hanyaeger.tutorial.spawners.LuchtObjectSpawner;
 import javafx.scene.input.MouseButton;
 
-public class GameLevel extends DynamicScene implements MouseButtonPressedListener, MouseMovedListener, EntitySpawnerContainer {
+public class GameLevel extends DynamicScene implements MouseButtonPressedListener, MouseMovedListener, EntitySpawnerContainer, UpdateExposer {
     private Tank speler1;
     private Tank speler2;
     private boolean aanDeBeurt = true; //True = speler1, false = speler2
 
     private TankArtillery tankArtillery;
 
-    public GameLevel(TankArtillery tankArtillery){this.tankArtillery = tankArtillery;}
+    public GameLevel(TankArtillery tankArtillery){
+        this.tankArtillery = tankArtillery;
+    }
 
     @Override
     public void setupScene() {
@@ -67,11 +70,11 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
         );
 
         speler1 = new Speler1(
-                new Coordinate2D(100, getHeight()-150), healthtextSpeler1, this, "sprites/tankGroen1.png", powerBarSpeler1
+                new Coordinate2D(100, getHeight()-150), healthtextSpeler1, this, tankArtillery.getKleurSpeler1(), powerBarSpeler1
         );
 
         speler2 = new Speler2(
-                new Coordinate2D(getWidth()-246, getHeight()-150), healthtextSpeler2, this, "sprites/tankGroen2.png", powerBarSpeler2
+                new Coordinate2D(getWidth()-246, getHeight()-150), healthtextSpeler2, this, tankArtillery.getKleurSpeler2(), powerBarSpeler2
         );
 
         addEntity(gebouw);
@@ -83,6 +86,8 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
         addEntity(powerBarSpeler2);
         addEntity(speler1);
         addEntity(speler2);
+
+        explicitUpdate(500);
 
     }
 
@@ -117,5 +122,17 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
 
     public TankArtillery getTankArtillery(){
         return tankArtillery;
+    }
+
+    @Override
+    public void explicitUpdate(long l) {
+        if(speler1.getHealth() <= 0){
+            tankArtillery.setSpeler1Gewonnen(false);
+            tankArtillery.setActiveScene(2);
+        }
+        if(speler2.getHealth() <= 0){
+            tankArtillery.setSpeler1Gewonnen(true);
+            tankArtillery.setActiveScene(2);
+        }
     }
 }

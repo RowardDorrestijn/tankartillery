@@ -27,8 +27,6 @@ public class Gebouw extends DynamicCompositeEntity {
         var hitboxLinks = new HitBox(
                 new Coordinate2D(0, 20), 130, 330
         );
-        hitboxRechts.setStrokeColor(Color.RED);
-        hitboxLinks.setStrokeColor(Color.RED);
         addEntity(hitboxRechts);
         addEntity(hitboxLinks);
 

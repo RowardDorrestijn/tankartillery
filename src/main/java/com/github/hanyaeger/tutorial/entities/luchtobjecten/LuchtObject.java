@@ -57,7 +57,7 @@ public class LuchtObject extends DynamicSpriteEntity implements UpdateExposer, C
     public void onCollision(Collider collider) {
         remove();
         if(collider instanceof Bullet){
-            ((Bullet) collider).remove();
+            ((Bullet) collider).explosion();
         }
     }
 }
