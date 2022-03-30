@@ -18,6 +18,13 @@ public class KleineBom extends Bom implements Collider, Collided, SceneBorderCro
         setFill(Color.GRAY);
     }
 
+    /**
+     * Valt altijd naar benenden, dus moet verdwijnen als het de scene uit valt.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 28-03-2022
+     */
+
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
         remove();

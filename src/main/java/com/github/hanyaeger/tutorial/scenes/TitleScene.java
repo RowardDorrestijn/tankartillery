@@ -9,7 +9,6 @@ import com.github.hanyaeger.tutorial.entities.buttons.colorbuttons.ColorButtonSp
 import com.github.hanyaeger.tutorial.entities.buttons.colorbuttons.ColorButtonSpeler2;
 import com.github.hanyaeger.tutorial.entities.text.TitleText;
 import javafx.scene.paint.Color;
-import java.util.ArrayList;
 
 public class TitleScene extends StaticScene {
 
@@ -18,6 +17,12 @@ public class TitleScene extends StaticScene {
     public TitleScene(TankArtillery tankArtillery){
         this.tankArtillery = tankArtillery;
     }
+
+    /**
+     * Maakt het titelscherm aan. Maakt teksten en knoppen aan.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
 
     @Override
     public void setupScene() {
@@ -54,6 +59,13 @@ public class TitleScene extends StaticScene {
         addEntity(titleText);
         addEntity(startButton);
     }
+
+    /**
+     * Maakt ColorButtons aan. Elke speler krijgt zijn eigen rij aan knoppen en er zijn 4 soorten kleuren.
+     * Dus er zijn 8 knoppen die moeten worden gemaakt.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
 
     void setupColorButtons(){
         double coordX = 200;

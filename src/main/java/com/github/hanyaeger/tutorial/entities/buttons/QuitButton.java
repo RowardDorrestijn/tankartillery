@@ -22,10 +22,24 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
+    /**
+     * Sluit het spel af.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D){
         tankArtillery.quit();
     }
+
+    /**
+     * Verandert de kleur bij interactie met de muis.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
 
     @Override
     public void onMouseEntered(){

@@ -22,12 +22,26 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
+    /**
+     * Verandert de active scene
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D){
         if(tankArtillery.getKleurSpeler1() != null && tankArtillery.getKleurSpeler2() != null) {
             tankArtillery.setActiveScene(1);
         }
     }
+
+    /**
+     * Verandert de kleur bij interactie met de muis.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
 
     @Override
     public void onMouseEntered(){

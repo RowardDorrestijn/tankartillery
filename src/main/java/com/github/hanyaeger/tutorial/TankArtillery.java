@@ -15,6 +15,12 @@ public class TankArtillery extends YaegerGame {
 
     public static void main(String[] args){launch(args);}
 
+    /**
+     * Maakt de game aan en maakt scenes aan.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 21-03-2022
+     */
+
     @Override
     public void setupGame() {
         setGameTitle("Tankartillery");
@@ -27,6 +33,18 @@ public class TankArtillery extends YaegerGame {
         addScene(1, new GameLevel(this));
         addScene(2, new GameOver(this));
     }
+
+    /**
+     * Returnt en zet de kleuren van speler1 en speler2.
+     * Wordt gebruikt bij het maken van tanks in GameLevel.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     *
+     * @param kleurSpeler1 kleur van speler 1
+     * @param kleurSpeler2 kleur van speler 2
+     *
+     * @since 29-03-2022
+     */
 
     public String getKleurSpeler1() {
         return kleurSpeler1;
@@ -44,6 +62,15 @@ public class TankArtillery extends YaegerGame {
         this.kleurSpeler2 = kleurSpeler2;
     }
 
+    /**
+     * Returnt en zet de winconditie van speler1.
+     * Bij return == true wint speler 1. Bij return == false wint speler 2.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @param speler1Gewonnen true or false
+     *
+     * @since 29-03-2022
+     */
 
     public boolean isSpeler1Gewonnen() {
         return speler1Gewonnen;

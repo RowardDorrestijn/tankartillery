@@ -7,6 +7,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class NameText extends TextEntity {
+    /**
+     * Zet de text van de nametext
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 28-03-2022
+     */
     public NameText(Coordinate2D initialLocation) {
         super(initialLocation);
 

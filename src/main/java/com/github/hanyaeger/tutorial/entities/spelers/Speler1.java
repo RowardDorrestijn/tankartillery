@@ -15,11 +15,31 @@ public class Speler1 extends Tank {
     }
 
 
+    /**
+     * Maakt een kogel aan op basis van waar de muis heeft geklikt.
+     * Beginlocatie is wat hoger dan de tank is, zodat er geen collision optreedt.
+     *
+     * @param mouseButton de muis zelf
+     * @param mouseCoordinate locatie van de muis.
+     * @param beginCoordinate locatie vanaf waar de kogel wordt geschoten (speler1 of speler2)
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 22-03-2022
+     */
+
     @Override
     public void schiet(MouseButton mouseButton, Coordinate2D mouseCoordinate, Coordinate2D beginCoordinate) {
         super.schiet(mouseButton, mouseCoordinate, beginCoordinate);
     }
 
+
+    /**
+     * Draait de barrel bij beweging van de muis. Voor speler1 kan hij alleen maar tussen 0 en 90 graden draaien.
+     * @param coordinate2D locatie van de muis.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 24-03-2022
+     */
     @Override
     public void draaiBarrel(Coordinate2D coordinate2D) {
         double graden = angleTo(coordinate2D) - 90;

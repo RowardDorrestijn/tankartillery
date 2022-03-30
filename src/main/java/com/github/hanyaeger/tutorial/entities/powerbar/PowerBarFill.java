@@ -12,6 +12,14 @@ public class PowerBarFill extends RectangleEntity {
         setFill(Color.ORANGE);
     }
 
+    /**
+     * Zet de breedte van de powerbar
+     *
+     * @param width breedte
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 28-03-2022
+     */
+
     public void setFillWidth(int width){
         setWidth(width);
     }

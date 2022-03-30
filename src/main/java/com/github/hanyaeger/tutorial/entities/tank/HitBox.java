@@ -17,6 +17,15 @@ public class HitBox extends RectangleEntity implements Collided {
         this.tank = tank;
     }
 
+
+    /**
+     * Als de tank wordt geraakt in de hitbox, krijgt de tank damage.
+     * Door polymorfie hoeft alleen maar worden gekeken of dat de collider de interface BulletCollider implementeert.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 23-03-2022
+     */
+
     @Override
     public void onCollision(Collider collider) {
         if(collider instanceof BulletCollider){

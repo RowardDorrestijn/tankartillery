@@ -14,5 +14,11 @@ public class HealthText extends TextEntity {
         setFill(Color.GREEN);
     }
 
+    /**
+     * Zet de text van de healthtext
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 24-03-2022
+     */
+
     public void setHealthText(int health){setText("Health: " + health);}
 }

@@ -22,10 +22,24 @@ public class PlayAgainButton extends TextEntity implements MouseButtonPressedLis
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
+    /**
+     * Verandert de active scene
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D){
         tankArtillery.setActiveScene(0);
     }
+
+    /**
+     * Verandert de kleur bij interactie met de muis.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
 
     @Override
     public void onMouseEntered(){

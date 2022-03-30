@@ -9,6 +9,13 @@ import javafx.scene.text.FontWeight;
 
 public class TitleText extends TextEntity {
 
+    /**
+     * Zet de text van de titletext
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
+
     public TitleText(Coordinate2D initialLocation) {
         super(initialLocation);
         setFont(Font.font("Roboto", FontWeight.BOLD, 50));

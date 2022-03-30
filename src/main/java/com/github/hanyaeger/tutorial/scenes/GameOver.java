@@ -16,6 +16,12 @@ public class GameOver extends StaticScene {
         this.tankArtillery = tankArtillery;
     }
 
+    /**
+     * Maakt het eindscherm aan. Maakt teksten en knoppen aan.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/achtergrond.png");
@@ -49,7 +55,14 @@ public class GameOver extends StaticScene {
         addEntity(quitButton);
     }
 
-    void setupWinnerText(){
+    /**
+     * Checkt wie er gewonnen heeft aan de hand van isSpeler1Gewonnen().
+     * Bij true wint speler1 en bij false speler 2.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
+    public void setupWinnerText(){
         String winnerText;
         if(tankArtillery.isSpeler1Gewonnen()){
             winnerText = "Speler 1 heeft gewonnen!";

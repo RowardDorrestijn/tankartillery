@@ -1,10 +1,7 @@
 package com.github.hanyaeger.tutorial.entities.tank;
 
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
-import com.github.hanyaeger.api.userinput.MouseMovedListener;
-import javafx.scene.input.MouseButton;
 
 public class Barrel extends DynamicSpriteEntity{
     private double graden;
@@ -13,9 +10,19 @@ public class Barrel extends DynamicSpriteEntity{
         super(barrelSprite, initialLocation);
     }
 
+    /**
+     * Setter en getter voor de hoek die de barrel maakt.
+     *
+     * @param graden aantal graden
+     * @return aantal graden
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 24-03-2022
+     */
+
     public void setGraden(double graden){
         this.graden = graden;
     }
+
     public double getGraden(){
         return graden;
     }

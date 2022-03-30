@@ -2,9 +2,7 @@ package com.github.hanyaeger.tutorial.entities.gebouw;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
-import com.github.hanyaeger.tutorial.TankArtillery;
-import com.github.hanyaeger.tutorial.entities.HitBox;
-import javafx.scene.paint.Color;
+
 
 public class Gebouw extends DynamicCompositeEntity {
 
@@ -12,6 +10,14 @@ public class Gebouw extends DynamicCompositeEntity {
     public Gebouw(Coordinate2D initialLocation) {
         super(initialLocation);
     }
+
+    /**
+     * Vierkante flat met een hitbox. Dient als obstakel.
+     * Heeft twee hitboxen voor betere collision.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 21-03-2022
+     */
 
     @Override
     protected void setupEntities() {

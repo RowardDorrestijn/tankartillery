@@ -10,6 +10,13 @@ public class PowerBar extends DynamicCompositeEntity {
         super(initialLocation);
     }
 
+    /**
+     * Zet alle atributen van de powerbar op.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 28-03-2022
+     */
+
     @Override
     protected void setupEntities() {
         var powerBarStroke = new PowerBarStroke(
@@ -22,6 +29,14 @@ public class PowerBar extends DynamicCompositeEntity {
         addEntity(powerBarStroke);
         addEntity(powerBarFill);
     }
+
+    /**
+     * Zet de breedte van de powerbar
+     *
+     * @param width breedte
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 28-03-2022
+     */
 
     public void setWidth(int width){
         powerBarFill.setFillWidth(width);

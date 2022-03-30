@@ -19,6 +19,13 @@ public class Bullet extends Bom implements SceneBorderCrossingWatcher, Newtonian
         setFrictionConstant(0);
     }
 
+    /**
+     * Bullet wordt verwijderd alleen verwijderd als het niet aan de bovenkant de scene uitvliegt.
+     * Moet weer terug kunnen vallen als het aan de bovenkant eruitvliegt.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 24-03-2022
+     */
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder sceneBorder) {

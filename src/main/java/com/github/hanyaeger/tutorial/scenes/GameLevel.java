@@ -8,17 +8,14 @@ import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseMovedListener;
 import com.github.hanyaeger.tutorial.TankArtillery;
 import com.github.hanyaeger.tutorial.entities.bommen.Bom;
-import com.github.hanyaeger.tutorial.entities.bommen.Bullet;
 import com.github.hanyaeger.tutorial.entities.gebouw.Gebouw;
-import com.github.hanyaeger.tutorial.entities.luchtobjecten.LuchtObject;
-import com.github.hanyaeger.tutorial.entities.luchtobjecten.Vliegtuig;
 import com.github.hanyaeger.tutorial.entities.powerbar.PowerBar;
 import com.github.hanyaeger.tutorial.entities.spelers.Speler1;
 import com.github.hanyaeger.tutorial.entities.spelers.Speler2;
 import com.github.hanyaeger.tutorial.entities.tank.Tank;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.entities.text.NameText;
-import com.github.hanyaeger.tutorial.spawners.LuchtObjectSpawner;
+import com.github.hanyaeger.tutorial.spawners.VliegtuigSpawner;
 import javafx.scene.input.MouseButton;
 
 public class GameLevel extends DynamicScene implements MouseButtonPressedListener, MouseMovedListener, EntitySpawnerContainer, UpdateExposer {
@@ -31,6 +28,14 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
     public GameLevel(TankArtillery tankArtillery){
         this.tankArtillery = tankArtillery;
     }
+
+    /**
+     * Zet het spelscherm op. Er worden 2 tanks neergezet, en een gebouw.
+     * Ook is er een powerbar en heeft elke speler een healthtext.
+     * De vliegtuigSpawner wordt toegevoegd in setupEntitySpawners().
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 21-03-2022
+     */
 
     @Override
     public void setupScene() {
@@ -93,8 +98,16 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
 
     @Override
     public void setupEntitySpawners() {
-        addEntitySpawner(new LuchtObjectSpawner(getWidth(), getHeight(), this));
+        addEntitySpawner(new VliegtuigSpawner(this));
     }
+
+
+    /**
+     * Als er in het spel geklikt wordt, dan wordt er een kogel geschoten.
+     * Hierna wordt de boolean aanDeBeurt geswitcht. Als aanDeBeurt true is, dan is speler1 aan de beurt en andersom.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 23-03-2022
+     */
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
@@ -107,10 +120,21 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
         }
     }
 
-    public void addBullet(Bom bom){
+    /**
+     * Voegt een bom aan het spel toe.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 23-03-2022
+     */
+    public void addBom(Bom bom){
         addEntity(bom);
     }
 
+
+    /**
+     * Checkt of dat de muis beweegt. Bij beweging draait de barrel van de speler die aan de beurt is.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 24-03-2022
+     */
     @Override
     public void onMouseMoved(Coordinate2D coordinate2D) {
         if(aanDeBeurt){
@@ -120,10 +144,12 @@ public class GameLevel extends DynamicScene implements MouseButtonPressedListene
         }
     }
 
-    public TankArtillery getTankArtillery(){
-        return tankArtillery;
-    }
 
+    /**
+     * Updater om te checken wie er dood is. Zet de winconditie, en gaat door naar het eindscherm.
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 28-03-2022
+     */
     @Override
     public void explicitUpdate(long l) {
         if(speler1.getHealth() <= 0){

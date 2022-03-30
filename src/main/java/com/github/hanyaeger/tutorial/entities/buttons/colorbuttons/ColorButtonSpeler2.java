@@ -26,10 +26,24 @@ public class ColorButtonSpeler2 extends DynamicRectangleEntity implements MouseB
         setFill(kleur);
     }
 
+    /**
+     * Zet de kleur van speler2 naar de kleur van de button.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
+
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         tankArtillery.setKleurSpeler2(entitieString);
     }
+
+    /**
+     * Verandert de stroke bij interactie met de muis.
+     *
+     * @author Mabel Rutjes, Roward Dorrestijn
+     * @since 29-03-2022
+     */
 
     @Override
     public void onMouseEntered() {
